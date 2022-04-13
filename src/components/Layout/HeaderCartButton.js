@@ -6,6 +6,8 @@ import CartContext from "../../store/cart-context.js"
 
 const HeaderCartButton = (props) => {
   const[btnAnimation, setBtnAnimation] = useState(false)
+  const[restartAnimation, setRestartAnimation] = useState(false)
+
   const cartCtx = useContext(CartContext)  
 
   const { items } = cartCtx;
@@ -21,7 +23,7 @@ const HeaderCartButton = (props) => {
     return(()=>{
       clearTimeout(aniTimer)
     })
-  }, [items])
+  }, [items, restartAnimation])
 
   return (
     <button className={btnClasses} onClick={props.onClick}>
